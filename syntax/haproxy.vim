@@ -61,6 +61,7 @@ syn keyword hapParam     uid ulimit-n
 syn keyword hapParam     reqrep reqirep rsprep rspirep    skipwhite nextgroup=hapRegexp
 syn keyword hapParam     errorloc errorloc302 errorloc303 skipwhite nextgroup=hapStatus
 syn keyword hapParam     default_backend use_backend      skipwhite nextgroup=hapSectLabel
+syn keyword hapParam     use_backend skipwhite nextgroup=hapSectLabel skipwhite nextgroup=operator 
 syn keyword hapParam     appsession  skipwhite nextgroup=hapAppSess
 syn keyword hapParam     bind        skipwhite nextgroup=hapIp1
 syn keyword hapParam     balance     skipwhite nextgroup=hapBalance
@@ -109,6 +110,9 @@ syn region  hapRegexp    contained start=/\S/ end=/\(\s\|$\)/ skip=/\\ / nextgro
 syn region  hapRegRepl   contained start=/\S/ end=/$/ contains=hapComment,hapEscape,hapBackRef
 syn region  hapRegexp2   contained start=/\S/ end=/\(\s\|$\)/ skip=/\\ / nextgroup=hapSectLabel skipwhite
 syn match   hapBackref   contained /\\\d/
+
+" operators
+syn keyword operator     if 
 
 
 " Transparent is a Vim keyword, so we need a regexp to match it
