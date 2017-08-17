@@ -60,7 +60,7 @@ syn keyword hapParam     server source srvexp srvtimeout
 syn keyword hapParam     uid ulimit-n
 syn keyword hapParam     reqrep reqirep rsprep rspirep    skipwhite nextgroup=hapRegexp
 syn keyword hapParam     errorloc errorloc302 errorloc303 skipwhite nextgroup=hapStatus
-syn keyword hapParam     default_backend                  skipwhite nextgroup=hapSectLabel
+syn keyword hapParam     default_backend use_backend      skipwhite nextgroup=hapSectLabel
 syn keyword hapParam     appsession  skipwhite nextgroup=hapAppSess
 syn keyword hapParam     bind        skipwhite nextgroup=hapIp1
 syn keyword hapParam     balance     skipwhite nextgroup=hapBalance
