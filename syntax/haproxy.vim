@@ -39,8 +39,15 @@ syn match   hapSectLabel /\S\+/                                               sk
 syn match   hapIp1       /\(\d\{1,3}\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}\)\?:\d\{1,5}/        nextgroup=hapIp2 contained
 syn match   hapIp2       /,\(\d\{1,3}\.\d\{1,3}\.\d\{1,3}\.\d\{1,3}\)\?:\d\{1,5}/hs=s+1 nextgroup=hapIp2 contained
 
+" Old Paramaters
+syn keyword hapOld       clitimeout contimeout
+syn keyword hapOld       srvtimeout
+
+" New timeout syntax
+syn match hapTmout       /timeout \S+/ contains=hapTimeout
+syn keyword hapTimeout   contained client server
 " Parameters
-syn keyword hapParam     chroot cliexp clitimeout contimeout
+syn keyword hapParam     chroot cliexp
 syn keyword hapParam     daemon debug disabled
 syn keyword hapParam     enabled
 syn keyword hapParam     fullconn
@@ -56,12 +63,12 @@ syn keyword hapParam     rspdel  rspdeny    skipwhite nextgroup=hapRegexp
 syn keyword hapParam     rspidel rspideny   skipwhite nextgroup=hapRegexp
 syn keyword hapParam     reqsetbe reqisetbe skipwhite nextgroup=hapRegexp2
 syn keyword hapParam     reqadd reqiadd rspadd rspiadd
-syn keyword hapParam     server source srvexp srvtimeout
+syn keyword hapParam     server source srvexp
 syn keyword hapParam     uid ulimit-n
 syn keyword hapParam     reqrep reqirep rsprep rspirep    skipwhite nextgroup=hapRegexp
 syn keyword hapParam     errorloc errorloc302 errorloc303 skipwhite nextgroup=hapStatus
 syn keyword hapParam     default_backend use_backend      skipwhite nextgroup=hapSectLabel
-syn keyword hapParam     use_backend skipwhite nextgroup=hapSectLabel skipwhite nextgroup=operator 
+syn keyword hapParam     use_backend skipwhite nextgroup=hapSectLabel skipwhite nextgroup=Operator
 syn keyword hapParam     appsession  skipwhite nextgroup=hapAppSess
 syn keyword hapParam     bind        skipwhite nextgroup=hapIp1
 syn keyword hapParam     balance     skipwhite nextgroup=hapBalance
@@ -112,7 +119,7 @@ syn region  hapRegexp2   contained start=/\S/ end=/\(\s\|$\)/ skip=/\\ / nextgro
 syn match   hapBackref   contained /\\\d/
 
 " operators
-syn keyword operator     if 
+syn keyword Operator     if
 
 
 " Transparent is a Vim keyword, so we need a regexp to match it
@@ -161,6 +168,7 @@ HiLink      hapStats     hapOption
 HiLink      hapLen       hapOption
 HiLink      hapSrvKey    hapOption
 
+HiLink      hapOld       Error
 
 delcommand HiLink
 
